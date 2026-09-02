@@ -1,0 +1,7 @@
+{
+  "name": "Vibely",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
