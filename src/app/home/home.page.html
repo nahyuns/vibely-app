@@ -1,20 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="saludo">
+      <span class="hola">¡Hola,</span>
+      <span class="nombre">Nana!</span>
+    </div>
+
+  
+
+  </header>
+
+
+  <!-- CONTENIDO -->
+  <main class="contenido">
+
+    <div class="titulo-seccion">
+      <div>
+        <span class="mini-titulo">TU INSPIRACIÓN</span>
+        <h1>Descubre ✦</h1>
+      </div>
+
+      <button class="boton-filtro">
+        ✦
+      </button>
+    </div>
+
+
+    <!-- COLLAGE -->
+    <section class="galeria">
+      @for (publicacion of servicio.publicaciones(); track publicacion.id; let indice = $index) {
+      <div
+        class="foto"
+        [class.foto-alta]="indice % 3 === 0"
+        [class.foto-media]="indice % 3 === 1"
+        [class.foto-baja]="indice % 3 === 2">
+        <img [src]="publicacion.imagen" [alt]="publicacion.titulo">
+        <button
+          type="button"
+          class="corazon"
+          [class.es-favorita]="publicacion.favorita"
+          [attr.aria-label]="publicacion.favorita ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+          [attr.aria-pressed]="publicacion.favorita"
+          (click)="servicio.cambiarFavorito(publicacion.id)">
+          {{ publicacion.favorita ? '♥' : '♡' }}
+        </button>
+      </div>
+      } @empty {
+      <p class="sin-publicaciones">Todavía no hay publicaciones.</p>
+      }
+    </section>
+
+  </main>
+
 </ion-content>

@@ -1,3 +1,29 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-router-outlet></ion-router-outlet>
+
+<nav class="navbar">
+
+  <button class="nav-item" routerLink="/home">
+    <span class="icono">⌂</span>
+    <span>Inicio</span>
+  </button>
+
+  <button class="nav-item" routerLink="/buscar">
+    <span class="icono">⌕</span>
+    <span>Buscar</span>
+  </button>
+
+  <button class="crear" routerLink="/crear">
+    +
+  </button>
+
+  <button class="nav-item" routerLink="/favoritos">
+    <span class="icono">♡</span>
+    <span>Favoritos</span>
+  </button>
+
+  <button class="nav-item" routerLink="/perfil">
+    <img src="assets/Nana.jpg" class="avatar">
+    <span>Perfil</span>
+  </button>
+
+</nav>

@@ -1,27 +1,509 @@
-#container {
+/* =========================================
+   PALETA
+   ========================================= */
+
+ion-content {
+  --background: #100d14;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+
+  height: 76px;
+
+  padding: 15px 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: rgba(20, 16, 25, 0.94);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 20;
+
+  backdrop-filter: blur(15px);
+}
+
+
+/* SALUDO */
+
+.saludo {
+
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1.05;
+}
+
+.hola {
+
+  color: #c5b8cf;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+}
+
+.nombre {
+
+  color: #ffffff;
+
+  font-size: 23px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   MENU
+   ========================================= */
+
+.menu {
+
+  width: 43px;
+
+  height: 43px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(185, 114, 255, 0.25);
+
+  background: rgba(102, 39, 145, 0.25);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+.menu span {
+
+  width: 18px;
+
+  height: 2px;
+
+  border-radius: 5px;
+
+  background: #d6a9ff;
+}
+
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.contenido {
+
+  padding: 25px 20px 110px;
+
+  max-width: 600px;
+
+  margin: auto;
+}
+
+
+/* =========================================
+   TITULO
+   ========================================= */
+
+.titulo-seccion {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.mini-titulo {
+
+  color: #967fa3;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+h1 {
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  margin: 4px 0 0;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* BOTON FILTRO */
+
+.boton-filtro {
+
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(205, 151, 255, 0.25);
+
+  background: #21182a;
+
+  color: #d4a0ff;
+
+  font-size: 17px;
+}
+
+
+/* =========================================
+   GALERÍA
+   ========================================= */
+
+.galeria {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 13px;
+}
+
+
+/* =========================================
+   FOTOS
+   ========================================= */
+
+.foto {
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: #211b25;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* IMAGEN */
+
+.foto img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* EFECTO */
+
+.foto:hover img {
+
+  transform: scale(1.04);
+}
+
+
+/* =========================================
+   DIFERENTES TAMAÑOS
+   ========================================= */
+
+.foto-alta {
+
+  height: 245px;
+}
+
+.foto-media {
+
+  height: 190px;
+}
+
+.foto-baja {
+
+  height: 150px;
+}
+
+.sin-publicaciones {
+  grid-column: 1 / -1;
+  color: #b7abbc;
   text-align: center;
+}
+
+
+/* =========================================
+   CORAZÓN
+   ========================================= */
+
+.corazon {
 
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+  right: 10px;
+
+  top: 10px;
+
+  width: 31px;
+
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(20, 14, 25, 0.7);
+
+  backdrop-filter: blur(8px);
+
+  color: white;
+
+  font-size: 19px;
+
+  border: 0;
+
+  padding: 0;
+
+  cursor: pointer;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.corazon.es-favorita {
+
+  color: #ff6b9d;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
 
-  color: #8c8c8c;
+/* =========================================
+   NAVBAR
+   ========================================= */
 
-  margin: 0;
+.navbar {
+
+  position: fixed;
+
+  left: 12px;
+
+  right: 12px;
+
+  bottom: 12px;
+
+  height: 67px;
+
+  border-radius: 22px;
+
+  background: rgba(48, 39, 53, 0.94);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.55);
+
+  backdrop-filter: blur(20px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-around;
+
+  z-index: 50;
+
+  padding: 0 7px;
 }
 
-#container a {
-  text-decoration: none;
+
+/* =========================================
+   ITEMS NAV
+   ========================================= */
+
+.nav-item {
+
+  width: 53px;
+
+  height: 55px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #8f8793;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 1px;
+}
+
+
+.nav-item .icono {
+
+  font-size: 25px;
+
+  line-height: 25px;
+}
+
+
+.nav-item .texto {
+
+  font-size: 8px;
+
+  margin-top: 2px;
+
+  opacity: 0.8;
+}
+
+
+/* ITEM ACTIVO */
+
+.nav-item.activo {
+
+  color: #d49aff;
+}
+
+
+.nav-item.activo .texto {
+
+  color: #d49aff;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   BOTON CREAR
+   ========================================= */
+
+.crear {
+
+  width: 49px;
+
+  height: 49px;
+
+  border-radius: 17px;
+
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    #a451df,
+    #6721a0
+  );
+
+  color: white;
+
+  font-size: 31px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow:
+    0 5px 18px rgba(135, 53, 190, 0.45);
+}
+
+
+.crear span {
+
+  margin-top: -3px;
+}
+
+
+/* =========================================
+   AVATAR
+   ========================================= */
+
+.avatar {
+
+  width: 25px;
+
+  height: 25px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid #a85bda;
+}
+
+
+/* =========================================
+   CELULARES PEQUEÑOS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .contenido {
+
+    padding-left: 15px;
+
+    padding-right: 15px;
+  }
+
+  .foto-alta {
+
+    height: 220px;
+  }
+
+  .foto-media {
+
+    height: 170px;
+  }
+
+  .foto-baja {
+
+    height: 135px;
+  }
+
+  .navbar {
+
+    left: 8px;
+
+    right: 8px;
+  }
 }

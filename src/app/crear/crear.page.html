@@ -1,0 +1,97 @@
+<ion-content [fullscreen]="true">
+
+  <main class="contenido">
+
+    <div class="encabezado">
+      <span class="mini-titulo">COMPARTE</span>
+      <h1>Crear ✦</h1>
+      <p>Compartí algo de tu universo.</p>
+    </div>
+
+    <form (ngSubmit)="publicar()">
+    <div class="subir" [class.con-imagen]="imagen">
+
+      @if (imagen) {
+      <img class="vista-previa" [src]="imagen" alt="Vista previa de la imagen">
+      } @else {
+      <div class="icono-subir">＋</div>
+      }
+
+      <h2>{{ nombreImagen || 'Agregar imagen' }}</h2>
+
+      <p>
+        Subí una imagen para compartir
+        con la comunidad.
+      </p>
+
+      <label class="elegir-imagen">
+        Elegir imagen
+        <input
+          type="file"
+          accept="image/*"
+          aria-label="Elegir imagen para la publicación"
+          (change)="seleccionarImagen($event)">
+      </label>
+
+    </div>
+
+    <div class="campo">
+
+      <label>Título</label>
+
+      <input
+        name="titulo"
+        type="text"
+        placeholder="Dale un nombre a tu publicación"
+        [(ngModel)]="titulo"
+        required
+        maxlength="80"
+      >
+
+    </div>
+
+    <div class="campo">
+
+      <label>Descripción</label>
+
+      <textarea
+        name="descripcion"
+        placeholder="Contanos un poco sobre tu publicación..."
+        [(ngModel)]="descripcion"
+        required
+        maxlength="300"
+      ></textarea>
+
+    </div>
+
+    <div class="campo">
+
+      <label>Categoría</label>
+
+      <select name="categoria" [(ngModel)]="categoria" required>
+        <option value="" disabled>Elegir categoría</option>
+        <option>Música</option>
+        <option>Arte</option>
+        <option>Moda</option>
+        <option>Fotografía</option>
+        <option>Inspiración</option>
+        <option>Deportes</option>
+      </select>
+
+    </div>
+
+    @if (error) {
+    <p class="estado error" role="alert">{{ error }}</p>
+    }
+    @if (mensaje) {
+    <p class="estado exito" role="status">{{ mensaje }}</p>
+    }
+
+    <button class="publicar" type="submit">
+      Publicar ✦
+    </button>
+    </form>
+
+  </main>
+
+</ion-content>

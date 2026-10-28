@@ -1,0 +1,162 @@
+<ion-content [fullscreen]="true">
+
+  <header class="header">
+
+    <div>
+      <span class="mini-titulo">EXPLORA</span>
+      <h1>Buscar</h1>
+    </div>
+
+    <button class="menu">
+      ☰
+    </button>
+
+  </header>
+
+
+  <main class="contenido">
+
+    <!-- BUSCADOR -->
+
+    <div class="buscador">
+
+      <span class="lupa">⌕</span>
+
+      <input
+        type="text"
+        placeholder="Buscar inspiración..."
+        aria-label="Buscar publicaciones"
+        [ngModel]="textoBusqueda()"
+        (ngModelChange)="buscar($event)">
+
+    </div>
+
+
+    <!-- CATEGORÍAS -->
+
+    <div class="titulo">
+      <span>DESCUBRE</span>
+      <h2>Explorar</h2>
+    </div>
+
+
+    <div class="categorias">
+
+      <button type="button" class="categoria musica"
+        [class.seleccionada]="categoriaSeleccionada() === 'Música'"
+        [attr.aria-pressed]="categoriaSeleccionada() === 'Música'"
+        (click)="seleccionarCategoria('Música')">
+        <span class="emoji">♫</span>
+        <span>Música</span>
+      </button>
+
+      <button type="button" class="categoria arte"
+        [class.seleccionada]="categoriaSeleccionada() === 'Arte'"
+        [attr.aria-pressed]="categoriaSeleccionada() === 'Arte'"
+        (click)="seleccionarCategoria('Arte')">
+        <span class="emoji">✦</span>
+        <span>Arte</span>
+      </button>
+
+      <button type="button" class="categoria moda"
+        [class.seleccionada]="categoriaSeleccionada() === 'Moda'"
+        [attr.aria-pressed]="categoriaSeleccionada() === 'Moda'"
+        (click)="seleccionarCategoria('Moda')">
+        <span class="emoji">♡</span>
+        <span>Moda</span>
+      </button>
+
+      <button type="button" class="categoria fotos"
+        [class.seleccionada]="categoriaSeleccionada() === 'Fotografía'"
+        [attr.aria-pressed]="categoriaSeleccionada() === 'Fotografía'"
+        (click)="seleccionarCategoria('Fotografía')">
+        <span class="emoji">◉</span>
+        <span>Fotografía</span>
+      </button>
+
+    </div>
+
+
+    <!-- TENDENCIAS -->
+
+    <div class="titulo tendencia-titulo">
+      <span>PARA TI</span>
+      <h2>Tendencias</h2>
+    </div>
+
+
+    <div class="tags">
+
+      <button type="button" (click)="buscarTendencia('aesthetic')">#aesthetic</button>
+      <button type="button" (click)="buscarTendencia('purple')">#purple</button>
+      <button type="button" (click)="buscarTendencia('music')">#music</button>
+      <button type="button" (click)="buscarTendencia('outfit')">#outfit</button>
+      <button type="button" (click)="buscarTendencia('inspiration')">#inspiration</button>
+      <button type="button" (click)="buscarTendencia('vibes')">#vibes</button>
+    </div>
+
+    <section class="resultados" aria-live="polite">
+      <div class="titulo">
+        <span>COLECCIÓN</span>
+        <h2>{{ textoBusqueda() || categoriaSeleccionada() || 'Publicaciones' }}</h2>
+      </div>
+
+      <div class="lista-resultados">
+        @for (publicacion of resultados(); track publicacion.id) {
+        <article class="resultado">
+          <img [src]="publicacion.imagen" [alt]="publicacion.titulo">
+          <div class="detalle-resultado">
+            <h3>{{ publicacion.titulo }}</h3>
+            <p>{{ publicacion.descripcion }}</p>
+            <span>{{ publicacion.categoria }}</span>
+          </div>
+          <button
+            type="button"
+            class="favorito"
+            [class.es-favorita]="publicacion.favorita"
+            [attr.aria-label]="publicacion.favorita ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            [attr.aria-pressed]="publicacion.favorita"
+            (click)="servicio.cambiarFavorito(publicacion.id)">
+            {{ publicacion.favorita ? '♥' : '♡' }}
+          </button>
+        </article>
+        } @empty {
+        <p class="sin-resultados">No encontramos publicaciones con esos filtros.</p>
+        }
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- NAV -->
+
+  <nav class="navbar">
+
+    <button class="nav-item">
+      <span class="icono">⌂</span>
+      <span class="texto">Inicio</span>
+    </button>
+
+    <button class="nav-item activo">
+      <span class="icono">⌕</span>
+      <span class="texto">Buscar</span>
+    </button>
+
+    <button class="crear">
+      +
+    </button>
+
+    <button class="nav-item">
+      <span class="icono">♡</span>
+      <span class="texto">Favoritos</span>
+    </button>
+
+    <button class="nav-item">
+      <img src="assets/perfil.png" class="avatar">
+      <span class="texto">Perfil</span>
+    </button>
+
+  </nav>
+
+</ion-content>

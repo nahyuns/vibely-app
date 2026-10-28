@@ -1,0 +1,109 @@
+<ion-content [fullscreen]="true">
+
+  <main class="contenido">
+
+    <div class="encabezado">
+
+      <div>
+        <span class="mini-titulo">MI ESPACIO</span>
+        <h1>Perfil</h1>
+      </div>
+
+      <button
+        class="configuracion"
+        type="button"
+        [attr.aria-label]="editando ? 'Cancelar edición' : 'Editar perfil'"
+        [attr.aria-pressed]="editando"
+        (click)="alternarEdicion()">⚙</button>
+
+    </div>
+
+    <section class="perfil">
+
+      <img
+        src="assets/Nana.jpg"
+        class="foto-perfil"
+        alt="Foto de perfil"
+      >
+
+      @if (editando) {
+      <label class="campo-perfil">
+        Nombre
+        <input type="text" [(ngModel)]="nombre" maxlength="40">
+      </label>
+      <label class="campo-perfil">
+        Usuario
+        <input type="text" [(ngModel)]="usuario" maxlength="30">
+      </label>
+      <label class="campo-perfil">
+        Biografía
+        <textarea [(ngModel)]="bio" maxlength="120"></textarea>
+      </label>
+      <button class="guardar-perfil" type="button" (click)="guardarPerfil()">
+        Guardar cambios
+      </button>
+      } @else {
+      <h2>{{ nombre }}</h2>
+
+      <p class="usuario">{{ usuario }}</p>
+
+      <p class="bio">
+        {{ bio }}
+      </p>
+      }
+
+    </section>
+
+    <section class="estadisticas">
+
+      <div>
+        <strong>{{ cantidadPublicaciones() }}</strong>
+        <span>Publicaciones</span>
+      </div>
+
+      <div>
+        <strong>{{ cantidadFavoritos() }}</strong>
+        <span>Guardados</span>
+      </div>
+
+      <div>
+        <strong>{{ cantidadCategorias() }}</strong>
+        <span>Categorías</span>
+      </div>
+
+    </section>
+
+    <section class="opciones">
+
+      <button type="button" (click)="mostrarAviso('Todavía no tienes playlists.')">
+        <span>♫</span>
+        Mis playlists
+        <b>›</b>
+      </button>
+
+      <button type="button" (click)="mostrarAviso('Todavía no tienes tableros.')">
+        <span>✦</span>
+        Mis tableros
+        <b>›</b>
+      </button>
+
+      <a class="opcion-link" routerLink="/favoritos">
+        <span>♡</span>
+        Mis favoritos
+        <b>›</b>
+      </a>
+
+    </section>
+
+    @if (aviso) {
+    <p class="aviso" role="status">{{ aviso }}</p>
+    }
+
+    <button class="cerrar" type="button"
+      (click)="mostrarAviso('La aplicación todavía no tiene inicio de sesión configurado.')">
+      Cerrar sesión
+    </button>
+
+  </main>
+
+</ion-content>
